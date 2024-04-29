@@ -41,8 +41,8 @@ namespace Mikee_sFoodSys
         private void sign_in_Click(object sender, EventArgs e)
         {
             // Get the username and password from the input fields
-            string username = user_box.Text;
-            string password = pass_box.Text;
+            string Username = user_box.Text;
+            string Password = pass_box.Text;
 
             // Open the database connection using DatabaseHelper
             using (MySqlConnection connection = DatabaseHelper.ConnOpen())
@@ -50,8 +50,8 @@ namespace Mikee_sFoodSys
                 // Query the database to check if the username and password exist
                 using (MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM account WHERE username = @Username AND password = @Password", connection))
                 {
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password);
+                    command.Parameters.AddWithValue("@Username", Username);
+                    command.Parameters.AddWithValue("@Password", Password);
 
                     int userCount = Convert.ToInt32(command.ExecuteScalar());
 
